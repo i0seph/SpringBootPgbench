@@ -28,4 +28,26 @@ Spring Boot와 PostgreSQL(pgbench schema) 환경에서 단일 서버 환경 내 
 
 ### 1. Build
 ```bash
-./mvnw clean package -DskipTests
+mvn clean package -DskipTests
+```
+
+### 2. Setting
+```bash
+cd target
+mkdir config
+cp classes/application.properties config
+# config/application.properties 파일 편집
+```
+
+### 3. Running
+```bash
+java -jar target/pgbench-0.0.1.jar
+```
+
+### 4. at Web Browser
+http://127.0.0.1/
+
+### 5. 부하 테스트
+```bash
+ab -c 50 -t 60 -n 1000000 -l http://127.0.0.1:8080/
+```
